@@ -32,6 +32,10 @@ app.use("/api/v1/course", courseRoute);
 app.use("/api/v1/purchase", purchaseRoute);
 app.use("/api/v1/progress", courseProgressRoute);
 
+ // updated recently
+app.get("/", (req, res) => {
+    res.send("MERN LMS Backend is Running.");
+});
 
 app.listen(PORT, ()=>{
 console.log(`Server is listening at port ${PORT}`);   
