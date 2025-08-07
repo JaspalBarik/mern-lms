@@ -30,7 +30,17 @@ export const authApi = createApi({
                     const result = await queryFulfilled;
                     dispatch(userLoggedIn({user:result.data.user}));
                 } catch(error){
-                    console.log(error);
+                      const errorMessage =
+        error?.error?.data?.message ||
+        error?.error?.data?.error ||
+        "Login failed. Please try again.";
+
+      console.error("Login Error:", errorMessage);
+       //console.log(error);
+
+      // Optionally show toast or alert
+      // toast.error(errorMessage);
+
                 }
             } 
         }),
@@ -43,7 +53,7 @@ export const authApi = createApi({
                 try{
                     dispatch(userLoggedOut());
                 } catch(error){
-                    console.log(error);
+                    console.error("Logout error:", error);
                 }
             } 
         }),
@@ -58,7 +68,7 @@ export const authApi = createApi({
                     const result = await queryFulfilled;
                     dispatch(userLoggedIn({user:result.data.user}));
                 } catch(error){
-                    console.log(error);
+                    console.error("Load User Error:", error);
                 }
             } 
         }),
