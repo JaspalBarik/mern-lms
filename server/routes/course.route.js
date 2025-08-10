@@ -11,7 +11,8 @@ router.route("/search").get(isAuthenticated, searchCourse);
 router.route("/published-courses").get(getPublishedCourse);
 router.route("/").get(isAuthenticated, getCreatorCourses);
 router.route("/:courseId").put(isAuthenticated, upload.single("courseThumbnail"), editCourse);
-router.route("/:courseId").get(isAuthenticated, getCourseById);
+router.route("/public/:courseId").get(getCourseById); // NO need of Auth
+router.route("/:courseId").get(isAuthenticated, getCourseById); // Needs Auth.
 router.route("/:courseId/lecture").post(isAuthenticated, createLecture);
 router.route("/:courseId/lecture").get(isAuthenticated, getCourseLecture);
 router.route("/:courseId/lecture/:lectureId").post(isAuthenticated, editLecture);
