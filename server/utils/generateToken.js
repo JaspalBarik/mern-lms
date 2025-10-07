@@ -11,8 +11,8 @@ export const generateToken = (res, user, message) => {
     .status(200)
     .cookie("token", token, {
       httpOnly: true,
-      secure: false, // ⬅️ important for localhost
-      sameSite: "lax", // ⬅️ helps cookies send correctly from frontend
+      secure: false, // later it was 
+      sameSite: "lax", // 
       maxAge: 24 * 60 * 60 * 1000,
     })
     .json({

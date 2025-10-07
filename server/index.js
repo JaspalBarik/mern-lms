@@ -23,7 +23,8 @@ app.use(cookieParser());
 app.use(cors({
     origin: [
     "http://localhost:5173", // for local dev
-     process.env.FRONTEND_URL, // changed
+     "https://mern-lms-wine.vercel.app" 
+    // process.env.FRONTEND_URL, // changed
     ],
     credentials: true,
 }));

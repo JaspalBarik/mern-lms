@@ -8,7 +8,7 @@ export const authApi = createApi({
            reducerPath: "authApi",
            baseQuery: fetchBaseQuery({
             baseUrl: USER_API,
-            credentials: 'include'
+            credentials: 'include'  // keep here globally
            }),
            endpoints: (builder) => ({
             registerUser: builder.mutation({
@@ -22,7 +22,7 @@ export const authApi = createApi({
                 query: (inputData) => ({
                     url: "login",
                     method: "POST",
-                    body: inputData
+                    body: inputData,
             }),
             async onQueryStarted(_, {queryFulfilled, dispatch}) {
                 try{
@@ -54,13 +54,13 @@ export const authApi = createApi({
                 } catch(error){
                     console.error("Logout error:", error);
                 }
-            } 
+            }, 
         }),
         loadUser: builder.query({
             query: () => ({
                 url:"profile",
                 method: "GET",
-                credentials: "include" // added / updated
+                //  credentials: "include" -  this was removed from here 
             }),
              async onQueryStarted(_, {queryFulfilled, dispatch}) {
                 try{
@@ -76,7 +76,7 @@ export const authApi = createApi({
                 url: "profile/update", 
                 method: "PUT",
                 body: formData,
-                credentials: "include"
+               // credentials: "include" - this was removed from here
             })
         })
 
